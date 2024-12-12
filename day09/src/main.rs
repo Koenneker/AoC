@@ -1,8 +1,9 @@
 use std::fs::File;
-use std::io::{self, BufRead, BufReader, Read};
+use std::io::{self, Read};
 
 fn main() -> Result<(), io::Error> {
     /*
+     */
     let count = day09_1("src/12345.txt")?;
     println!("Day09_1 12345: {}", count);
     let count = day09_1("src/example.txt")?;
@@ -10,7 +11,6 @@ fn main() -> Result<(), io::Error> {
     let count = day09_1("src/input.txt")?;
     println!("Day09_1 Input: {}", count);
     println!("");
-     */
 
     let count = day09_2("src/example.txt")?;
     println!("Day09_2 Test: {}", count);
@@ -161,19 +161,6 @@ fn blocks_2_vec(input_blocks: &Vec<(i32, i32)>) -> Vec<i32> {
     }
 
     output_vec
-}
-
-fn get_last_block_length_id(input_vec: &Vec<i32>) -> (i32, i32) {
-    let mut index = input_vec.len() - 1;
-    let mut len = 0;
-    let id = input_vec[index];
-
-    while input_vec[index] == id {
-        len += 1;
-        index -= 1;
-    }
-
-    (id, len)
 }
 
 fn move_blocks_forward(input_vec: &Vec<i32>) -> Vec<i32> {
