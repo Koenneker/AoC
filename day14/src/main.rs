@@ -81,15 +81,23 @@ fn day14_2(filename: &str, width: i64, height: i64) -> Result<i64, io::Error> {
     let mut longest_row = 0;
     let mut sim_id_of_longest_row = 0;
 
-    for i in 0..10000 {
+    let mut number_of_rows_over_5 = 0;
+
+    for i in 0..100000 {
         let grid = simulate_grid_at_time(width, height, &robots, i);
         let longest_row_in_grid = detect_longest_row_in_grid(&grid);
+
+        if longest_row_in_grid > 5 {
+            number_of_rows_over_5 += 1;
+        }
 
         if longest_row_in_grid > longest_row {
             longest_row = longest_row_in_grid;
             sim_id_of_longest_row = i;
         }
     }
+
+    println!("Saw {} rows over 5", number_of_rows_over_5);
 
     let grid = simulate_grid_at_time(width, height, &robots, sim_id_of_longest_row);
     print_grid(&grid);

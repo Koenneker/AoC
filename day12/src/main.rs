@@ -238,7 +238,7 @@ fn get_region(
 fn print_grid(grid: &Vec<Vec<char>>) {
     for row in grid {
         for num in row {
-            print!("{} ", num)
+            print!("{}", num)
         }
         println!("");
     }
