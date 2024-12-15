@@ -5,6 +5,7 @@ use regex::Error;
 
 fn main() -> Result<(), io::Error> {
     /*
+     */
     let count = day15_1("src/smallEx.txt")?;
     println!("day15_1 Example: {}", count);
     println!("");
@@ -14,16 +15,15 @@ fn main() -> Result<(), io::Error> {
     let count = day15_1("src/input.txt")?;
     println!("day15_1 input : {}", count);
     println!("");
-     */
 
     /*
+     */
     let count = day15_2("src/smallEx_2.txt")?;
     println!("day15_2 Small Example: {}", count);
     println!("");
     let count = day15_2("src/example.txt")?;
     println!("day15_2 Example: {}", count);
     println!("");
-    */
     let count = day15_2("src/input.txt")?;
     println!("day15_2 input : {}", count);
     println!("");
@@ -75,7 +75,7 @@ fn day15_1(filename: &str) -> Result<usize, io::Error> {
     }
 
     let score = calculate_gps(&*grid_pointer);
-    print_grid(&*grid_pointer);
+    //print_grid(&*grid_pointer);
     Ok(score)
 }
 
@@ -116,13 +116,13 @@ fn day15_2(filename: &str) -> Result<usize, io::Error> {
 
     let mut grid_pointer = &mut grid;
     for operation in operations {
-        println!("Next move: {}", operation);
-        print_grid(&*grid_pointer);
+        //println!("Next move: {}", operation));
+        //print_grid(&*grid_pointer);
         (robot_position, grid_pointer) = apply_large_move(grid_pointer, robot_position, operation);
     }
 
     let score = calculate_gps(&*grid_pointer);
-    print_grid(&*grid_pointer);
+    //print_grid(&*grid_pointer);
     Ok(score)
 }
 
@@ -142,10 +142,9 @@ fn apply_large_move(
         }
     }
 
-    //Check if the robot is at the field
     if grid[robot_position.1][robot_position.0] != '@' {
-        print_grid(grid);
-        print!("{}", grid[robot_position.1][robot_position.0]);
+        //print_grid(grid);
+        //print!("{}", grid[robot_position.1][robot_position.0]);
         panic!("Robot not there");
     }
 
@@ -179,7 +178,7 @@ fn apply_large_move(
         }
         '#' | ']' | '[' => field_to_move_into = robot_position,
         _ => {
-            print_grid(grid);
+            //print_grid(grid);
             panic!(
                 "Unexpected Char: '{}' in Grid",
                 grid[field_to_move_into.1][field_to_move_into.0]
@@ -236,7 +235,7 @@ fn apply_move(
             } else if grid[o_index.1][o_index.0] == '#' {
                 field_to_move_into = robot_position;
             } else {
-                println!("Unexpected Char: '{}' in Grid", grid[o_index.1][o_index.0]);
+                //println!("Unexpected Char: '{}' in Grid", grid[o_index.1][o_index.0]);
             }
         }
         '#' => field_to_move_into = robot_position,
@@ -300,10 +299,10 @@ fn check_if_large_box_is_moveable_vertical(
     direction: (i32, i32),
     box_coords: (usize, usize),
 ) -> bool {
-    println!(
+    /*println!(
         "Called with direction: {:?}, box_coords:{:?}",
         direction, box_coords
-    );
+    );*/
     if grid[box_coords.1][box_coords.0] != '[' {
         panic!("Box not present at {:?}", (box_coords.1, box_coords.0));
     }
@@ -380,10 +379,12 @@ fn move_large_box_laterally(
     direction: (i32, i32),
     box_coords: (usize, usize),
 ) -> &mut Vec<Vec<char>> {
+    /*
     println!(
         "Called move_lateral with dir: {:?}, box: {:?}",
         direction, box_coords
     );
+    */
     if grid[box_coords.1][box_coords.0] != '[' {
         panic!("Box not present at {:?}", (box_coords.0, box_coords.1));
     }
@@ -405,7 +406,6 @@ fn move_large_box_laterally(
         }
         (-1, 0) => {
             let currently_in_place = grid[box_coords.1][box_coords.0 - 1];
-            println!("{}", currently_in_place);
             if currently_in_place == ']' {
                 move_large_box_laterally(grid, direction, (box_coords.0 - 2, box_coords.1));
             }
@@ -425,10 +425,12 @@ fn move_large_box_vertically(
     direction: (i32, i32),
     box_coords: (usize, usize),
 ) -> &mut Vec<Vec<char>> {
+    /*
     println!(
         "Got called with dir:{:?}, box_coords:{:?}",
         direction, box_coords
     );
+    */
     if grid[box_coords.1][box_coords.0] != '[' {
         panic!("Box not present at {:?}", (box_coords.1, box_coords.0));
     }
