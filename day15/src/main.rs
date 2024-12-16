@@ -15,9 +15,9 @@ fn main() -> Result<(), io::Error> {
     let count = day15_1("src/input.txt")?;
     println!("day15_1 input : {}", count);
     println!("");
-
     /*
-     */
+
+    */
     let count = day15_2("src/smallEx_2.txt")?;
     println!("day15_2 Small Example: {}", count);
     println!("");
