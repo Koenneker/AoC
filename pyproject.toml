@@ -1,0 +1,11 @@
+[project]
+name = "aoc-git"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "numba>=0.63.0",
+    "numpy>=2.3.5",
+    "tqdm>=4.67.1",
+]
